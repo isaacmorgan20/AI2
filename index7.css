@@ -1,0 +1,31 @@
+/* Small UI tweaks */
+.glass {
+  background: rgba(10, 14, 20, 0.6);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.card {
+  background: linear-gradient(180deg, #071022 0%, #0B1024 100%);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform .12s ease, background-color .12s ease;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+
+.pad-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-weight: 800;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+#overlay.hidden { display: none; }

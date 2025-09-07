@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>K-WORLD — Dash & Collect</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="index7.css" />
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+  <!-- Header -->
+  <header class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-300 to-purple-300 grid place-items-center text-slate-900 font-extrabold">KW</div>
+      <h1 class="text-xl sm:text-2xl font-bold tracking-tight">K-WORLD — Dash & Collect</h1>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button id="btnMute" class="px-3 py-2 rounded-lg btn-ghost text-sm">🔊 Sound</button>
+      <button id="btnPause" class="px-3 py-2 rounded-lg btn-ghost text-sm">⏸ Pause</button>
+      <button id="btnReset" class="px-3 py-2 rounded-lg btn-ghost text-sm">↻ Reset</button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-5xl mx-auto px-4 pb-12">
+    <!-- HUD -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div class="p-3 rounded-2xl card glass">
+        <div class="text-xs text-slate-400">Score</div>
+        <div id="hudScore" class="text-lg font-bold">0</div>
+      </div>
+      <div class="p-3 rounded-2xl card glass">
+        <div class="text-xs text-slate-400">Best</div>
+        <div id="hudBest" class="text-lg font-bold">0</div>
+      </div>
+      <div class="p-3 rounded-2xl card glass">
+        <div class="text-xs text-slate-400">Coins</div>
+        <div id="hudCoins" class="text-lg font-bold">0 ✨</div>
+      </div>
+      <div class="p-3 rounded-2xl card glass">
+        <div class="text-xs text-slate-400">Lives</div>
+        <div id="hudLives" class="text-lg font-bold">3 ❤️</div>
+      </div>
+    </div>
+
+    <!-- Game Card -->
+    <section class="rounded-2xl card glass p-3 md:p-4">
+      <!-- Canvas wrapper keeps 16:9 ratio and is responsive -->
+      <div class="relative w-full">
+        <div class="aspect-video">
+          <canvas id="game" class="rounded-xl w-full h-full block bg-slate-900"></canvas>
+        </div>
+
+        <!-- On-canvas messages -->
+        <div id="overlay"
+             class="pointer-events-none absolute inset-0 grid place-items-center text-center p-4">
+          <div id="overlayContent"
+               class="pointer-events-auto bg-slate-900/70 backdrop-blur rounded-xl p-4 sm:p-6 max-w-md">
+            <h2 class="text-xl sm:text-2xl font-bold mb-2">K-WORLD — Dash & Collect</h2>
+            <p class="text-slate-300 text-sm sm:text-base mb-4">
+              Move with <strong>WASD</strong> / <strong>Arrow Keys</strong> or the on-screen pad.
+              Collect <span class="text-amber-300">coins</span>, avoid <span class="text-rose-300">hazards</span>.
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center">
+              <button id="btnStart" class="px-4 py-2 rounded-lg bg-emerald-500 text-slate-900 font-semibold">
+                ▶ Play
+              </button>
+              <button id="btnHow" class="px-4 py-2 rounded-lg btn-ghost">
+                ❓ How to play
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="md:hidden absolute bottom-3 left-3 grid grid-cols-3 gap-2 select-none">
+          <div></div>
+          <button class="pad-btn" data-dir="up">▲</button>
+          <div></div>
+          <button class="pad-btn" data-dir="left">◀</button>
+          <button class="pad-btn" data-dir="down">▼</button>
+          <button class="pad-btn" data-dir="right">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <p class="text-center text-slate-500 text-xs sm:text-sm mt-4">
+      Prototype • No external assets • Sounds generated via Web Audio API • Best score saved locally
+    </p>
+  </main>
+
+  <!-- App -->
+  <script src="app.js"></script>
+</body>
+</html>
